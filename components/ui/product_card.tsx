@@ -36,8 +36,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, rating, price, descript
 
   return (
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="h-64 bg-gray-100 flex items-center justify-center">
-        <img src={src} alt={name} className="object-contain h-full" />
+      <div className="h-72 bg-gray-100 flex items-center justify-center">
+        <img src={src} alt={name} className="object-cover h-full" />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{name}</h3>
