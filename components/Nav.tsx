@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { Menu, ShoppingCart, User, Search } from 'lucide-react';
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+
 
 const Navbar = () => {
   return (
@@ -35,6 +37,7 @@ const Navbar = () => {
           <button className="md:hidden p-2 hover:bg-gray-100 rounded-full">
             <Menu className="text-gray-700" />
           </button>
+          <UserButton/>
         </div>
       </div>
     </div>

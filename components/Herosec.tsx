@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowBigDown, ArrowBigLeft, ArrowLeft, ArrowRight, Headphones } from "lucide-react";  // Importing the Headphones icon from lucide-react
 
 import Carousel from "./Carousel";
+import Link from "next/link";
 
 const HeroSection = () => {
     return (
@@ -15,18 +16,20 @@ const HeroSection = () => {
                     <p className="text-gray-300 text-lg mb-8 animate-fade-in-delay">
                         Immerse yourself in crystal-clear audio with our premium headphones collection.
                     </p>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 animate-fade-in-up flex items-center mx-auto md:mx-0">
-                        Shop Now
-                        <ArrowRight className="ml-2" />
-                    </button>
+                    <Link href="/dashboard">
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 animate-fade-in-up flex items-center mx-auto md:mx-0">
+                            Shop Now
+                            <ArrowRight className="ml-2" />
+                        </button>
+                    </Link>
 
                 </div>
 
                 <div className="flex justify-center items-center py-8">
-  <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12 h-96 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg animate-fade-in flex items-center justify-center">
-    <Carousel />
-  </div>
-</div>
+                    <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12 h-96 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg animate-fade-in flex items-center justify-center">
+                        <Carousel />
+                    </div>
+                </div>
 
 
 
