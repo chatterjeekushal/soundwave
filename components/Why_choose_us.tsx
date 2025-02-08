@@ -38,7 +38,7 @@ const WhyChooseSoundWave = () => {
           <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
             <Heart className="text-3xl text-blue-600" />
           </div>
-          <h3 className="text-xl font-bold text-center mb-4">Customer First</h3>
+          <h3 className="text-xl font-bold text-center mb-4">Customer&rsquo;s First</h3>
           <p className="text-gray-600 text-center">
             Our dedicated support team ensures your complete satisfaction with 24/7 assistance and hassle-free returns.
           </p>

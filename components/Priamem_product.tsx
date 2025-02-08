@@ -4,7 +4,6 @@ import {
     BatteryFull,
     Volume2,
     Bluetooth,
-    Headphones,
     Mic,
     Sliders,
     Waves,
@@ -13,6 +12,8 @@ import {
     RotateCcw,
     Headphones as Headset,
 } from 'lucide-react';
+
+import NextImage from 'next/image';
 
 const ProductShowcase = () => {
     return (
@@ -66,9 +67,9 @@ const ProductShowcase = () => {
                             <span className="font-semibold">4.9/5.0</span>
                         </div>
                         <div className="flex -space-x-2">
-                            <img src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
-                            <img src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
-                            <img src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
+                            <NextImage src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
+                            <NextImage src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
+                            <NextImage src="https://avatar.iran.liara.run/public" className="w-8 h-8 rounded-full border-2 border-white transition-opacity duration-300 opacity-100" alt="User" loading="lazy" />
                             <span className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-sm">+99</span>
                         </div>
                     </div>
@@ -77,7 +78,7 @@ const ProductShowcase = () => {
                     <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-3xl  flex items-center justify-center">
                         <div className="relative w-full h-[500px]">
                             {/* Replace Headphones icon with an image */}
-                            <img
+                            <NextImage
                                 src="https://images.pexels.com/photos/10292808/pexels-photo-10292808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                 alt="Headphones"
                                 className="w-full h-full object-cover absolute rounded-md"

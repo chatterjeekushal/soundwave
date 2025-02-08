@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Headphones, ArrowRight } from "lucide-react"; // Import Lucide icons
+import {  ArrowRight } from "lucide-react"; // Import Lucide icons
 
 import ProductCard from "./ui/product_card";
 const FeaturedProducts = () => {

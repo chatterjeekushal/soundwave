@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Wifi, VolumeX, Volume, Speaker, Headphones, Gamepad, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Wifi, VolumeX, Volume, Speaker, Headphones, Gamepad,  ArrowRight } from 'lucide-react';
 
 const Categories = () => {
   return (

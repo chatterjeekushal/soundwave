@@ -1,7 +1,7 @@
 
-
 import React from 'react';
-import { Star, ShieldCheck, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Star, ArrowRight } from 'lucide-react';
 
 const CustomerReviews = () => {
   return (
@@ -44,11 +44,12 @@ const CustomerReviews = () => {
         {/* Review 1 */}
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <img
+            <Image
               src="https://avatar.iran.liara.run/public"
               alt="Sarah Johnson"
-              className="w-12 h-12 rounded-full transition-opacity duration-300 opacity-100"
-              loading="lazy"
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full"
             />
             <div>
               <h3 className="font-semibold">Sarah Johnson</h3>
@@ -62,8 +63,8 @@ const CustomerReviews = () => {
             </div>
           </div>
           <p className="text-gray-600 mb-4">
-            "These headphones are absolutely amazing! The sound quality is crystal clear, and the noise cancellation
-            feature works perfectly. Very comfortable for long listening sessions."
+            &ldquo;These headphones are absolutely amazing! The sound quality is crystal clear, and the noise cancellation
+            feature works perfectly. Very comfortable for long listening sessions.&rdquo;
           </p>
           <div className="flex items-center justify-between text-sm text-gray-500">
             <span>Elite Wireless Pro</span>
@@ -74,11 +75,12 @@ const CustomerReviews = () => {
         {/* Review 2 */}
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <img
+            <Image
               src="https://avatar.iran.liara.run/public"
               alt="Mike Thompson"
-              className="w-12 h-12 rounded-full transition-opacity duration-300 opacity-100"
-              loading="lazy"
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full"
             />
             <div>
               <h3 className="font-semibold">Mike Thompson</h3>
@@ -92,8 +94,8 @@ const CustomerReviews = () => {
             </div>
           </div>
           <p className="text-gray-600 mb-4">
-            "Great battery life and impressive sound quality. The build quality is excellent, and the app integration
-            makes it easy to customize the settings to my preference."
+            &ldquo;Great battery life and impressive sound quality. The build quality is excellent, and the app integration
+            makes it easy to customize the settings to my preference.&rdquo;
           </p>
           <div className="flex items-center justify-between text-sm text-gray-500">
             <span>Bass Master X</span>
@@ -104,11 +106,12 @@ const CustomerReviews = () => {
         {/* Review 3 */}
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
-            <img
+            <Image
               src="https://avatar.iran.liara.run/public"
               alt="Emily Chen"
-              className="w-12 h-12 rounded-full transition-opacity duration-300 opacity-100"
-              loading="lazy"
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full"
             />
             <div>
               <h3 className="font-semibold">Emily Chen</h3>
@@ -122,8 +125,8 @@ const CustomerReviews = () => {
             </div>
           </div>
           <p className="text-gray-600 mb-4">
-            "The comfort level is outstanding! I can wear these for hours while working. The touch controls are
-            intuitive, and the sound quality exceeds my expectations."
+            &ldquo;The comfort level is outstanding! I can wear these for hours while working. The touch controls are
+            intuitive, and the sound quality exceeds my expectations.&rdquo;
           </p>
           <div className="flex items-center justify-between text-sm text-gray-500">
             <span>Studio Pro Max</span>
@@ -139,8 +142,6 @@ const CustomerReviews = () => {
           <ArrowRight />
         </button>
       </div>
-
-      <section/>
     </div>
   );
 };

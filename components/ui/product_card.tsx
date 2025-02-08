@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Star, StarHalf, StarOff } from 'lucide-react';
+import Image from 'next/image'; // Import Image component for Next.js
+import { Star, StarHalf } from 'lucide-react';
 
 interface ProductCardProps {
   name: string;
@@ -15,7 +16,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, rating, price, descript
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0;
-    const emptyStars = 5 - Math.ceil(rating);
 
     const starElements = [];
 
@@ -29,15 +29,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, rating, price, descript
       starElements.push(<StarHalf key="half" className="text-yellow-400" />);
     }
 
-   
-
     return starElements;
   };
 
   return (
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="h-72 bg-gray-100 flex items-center justify-center">
-        <img src={src} alt={name} className="object-cover h-full" />
+        <Image src={src} alt={name} width={288} height={288} className="object-cover h-full" />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{name}</h3>

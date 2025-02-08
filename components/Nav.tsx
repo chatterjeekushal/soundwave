@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Menu, ShoppingCart, User, Search } from 'lucide-react';
-import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+import {  UserButton } from '@clerk/nextjs'
 
 
 const Navbar = () => {

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ArrowBigDown, ArrowBigLeft, ArrowLeft, ArrowRight, Headphones } from "lucide-react";  // Importing the Headphones icon from lucide-react
+import {  ArrowRight} from "lucide-react";  // Importing the Headphones icon from lucide-react
 
 import Carousel from "./Carousel";
 import Link from "next/link";
