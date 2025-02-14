@@ -1,90 +1,125 @@
 
-import * as React from "react";
+import { Carousel, CarouselSlide,} from '@mantine/carousel';
 import ProductCard from "./ui/product_card";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-   
-} from "@/components/ui/carousel";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+function Bestsaller() {
 
-export function CarouselSize() {
-    const products = [
+    let products = [
+
         {
+            src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
             name: "Pro Wireless Max",
-            rating: 4.5,
-            price: "$299.99",
-            description: "Active Noise Cancelling",
+            price: 299,
             stars: 4.5,
-            src:
-                "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            rating: "4.5",
+            description: "Active Noise Cancelling"
         },
+
         {
-            name: "Studio Pro",
-            rating: 5,
-            price: "$399.99",
-            description: "Professional Studio Quality",
-            stars: 5,
-            src:
-                "https://images.pexels.com/photos/3721941/pexels-photo-3721941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            src: "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            name: "Pro Wireless Max",
+            price: 299,
+            stars: 4.5,
+            rating: "4.5",
+            description: "Active Noise Cancelling"
         },
+
         {
-            name: "Sport Elite",
-            rating: 4,
-            price: "$199.99",
-            description: "Waterproof & Sweatproof",
-            stars: 4,
-            src:
-                "https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            src: "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            name: "Pro Wireless Max",
+            price: 299,
+            stars: 4.5,
+            rating: "4.5",
+            description: "Active Noise Cancelling"
         },
+
         {
-            name: "Sport Elite",
-            rating: 4,
-            price: "$199.99",
-            description: "Waterproof & Sweatproof",
-            stars: 4,
-            src:
-                "https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            src: "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            name: "Pro Wireless Max",
+            price: 299,
+            stars: 4.5,
+            rating: "4.5",
+            description: "Active Noise Cancelling"
         },
-    ];
+
+        {
+            src: "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            name: "Pro Wireless Max",
+            price: 299,
+            stars: 4.5,
+            rating: "4.5",
+            description: "Active Noise Cancelling"
+        },
+
+
+
+    ]
+
 
     return (
-        <>
 
-            <div className="max-w-screen-xl mx-auto px-4 pt-16">
-                <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold">Best Sellers</h2>
-                    <div className="flex gap-2">
-                        <button className="bestseller-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors">
-                            <i className="fa-solid fa-arrow-left text-gray-600"></i>
-                        </button>
-                        <button className="bestseller-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors">
-                            <i className="fa-solid fa-arrow-right text-gray-600"></i>
-                        </button>
-                    </div>
-                </div>
-                <p className="text-gray-600 max-w-2xl">Our most popular headphones that customers love and keep coming back for.</p>
+        <div className='w-full mx-auto ml-2 sm:m-auto lg:m-auto  xl:m-auto sm:px-6 lg:px-8 mt-16 '>
+
+            <div className='flex flex-col items-center justify-center gap-4 mb-12 pt-3 lg:pt-20'>
+
+                <div className="text-3xl font-bold text-center">Our Bestsaller</div>
+                {/* write descripction aboutbest saller */}
+                <div className="text-gray-600 text-center">Discover our most popular premium headphones</div>
+
             </div>
 
-            <Carousel opts={{ align: "start" }} className="max-w-full md:pl-8 pt-5 lg:pt-7">
-                <CarouselContent className="w-full -ml-2 md:-ml-4">
-                    {products.map((product, index) => (
-                        <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/3 pl-2 md:pl-4">
-                            <div className="p-5">
-                                <ProductCard
-                                    name={product.name}
-                                    rating={product.rating}
-                                    price={product.price}
-                                    description={product.description}
-                                    src={product.src} // Pass the source image URL
-                                />
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
+            <Carousel
+                height="auto"
+                slideSize="33.333333%"
+                nextControlIcon={<ArrowRight className="w-8 h-8 bg-slate-300 text-black border rounded-lg" />}
+                previousControlIcon={<ArrowLeft className="w-8 h-8 bg-slate-300 text-black border rounded-lg" />}
+                slideGap="sm"
+                loop
+                align="start"
+                slidesToScroll={1}
+                className='flex items-center w-full justify-center gap-32 text-red-600'
+            >
+
+                {/* ...other slides */}
+
+                {products.map((product, index) => (
+
+                <CarouselSlide className='flex items-center justify-center gap-32 border border-white' key={index}>
+
+                    {/* Product Card */}
+
+                  
+                        <ProductCard
+                            src={product.src} // Using Lucide Headphones Icon
+                            name={product.name}
+                            price={product.price}
+                            stars={product.stars}
+                            rating={product.rating}
+                            description={product.description}
+                            
+                        />
+                 
+                </CarouselSlide>
+
+))}
+
 
             </Carousel>
 
-        </>
+
+            {/* add view all button here */}
+
+            {/* View All Products Button */}
+            <div className="text-center mt-12">
+                <button className="flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 text-sm sm:text-base font-semibold">
+                    View All Products
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+            </div>
+
+
+        </div>
     );
 }
+
+export default Bestsaller;

@@ -45,11 +45,11 @@ const CustomerReviews = () => {
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
             <Image
-              src="https://avatar.iran.liara.run/public"
+              src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174034.jpg?t=st=1739112733~exp=1739116333~hmac=0bcfc75496469efcae6e1e6a9c37feb9de12df9427aae239dc6048e5b9fe2a65&w=740"
               alt="Sarah Johnson"
               width={48}
               height={48}
-              className="w-12 h-12 rounded-full"
+              className="rounded-full"
             />
             <div>
               <h3 className="font-semibold">Sarah Johnson</h3>
@@ -76,11 +76,11 @@ const CustomerReviews = () => {
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
             <Image
-              src="https://avatar.iran.liara.run/public"
+              src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174034.jpg?t=st=1739112733~exp=1739116333~hmac=0bcfc75496469efcae6e1e6a9c37feb9de12df9427aae239dc6048e5b9fe2a65&w=740"
               alt="Mike Thompson"
               width={48}
               height={48}
-              className="w-12 h-12 rounded-full"
+              className=" rounded-full"
             />
             <div>
               <h3 className="font-semibold">Mike Thompson</h3>
@@ -107,11 +107,11 @@ const CustomerReviews = () => {
         <div className="bg-white p-6 rounded-2xl shadow-sm">
           <div className="flex items-center gap-4 mb-4">
             <Image
-              src="https://avatar.iran.liara.run/public"
+              src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174034.jpg?t=st=1739112733~exp=1739116333~hmac=0bcfc75496469efcae6e1e6a9c37feb9de12df9427aae239dc6048e5b9fe2a65&w=740"
               alt="Emily Chen"
               width={48}
               height={48}
-              className="w-12 h-12 rounded-full"
+              className="rounded-full"
             />
             <div>
               <h3 className="font-semibold">Emily Chen</h3>

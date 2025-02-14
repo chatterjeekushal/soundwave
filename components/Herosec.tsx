@@ -1,41 +1,83 @@
 
-import React from "react";
-import {  ArrowRight} from "lucide-react";  // Importing the Headphones icon from lucide-react
+'use client';
 
-import Carousel from "./Carousel";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // Import Lucide icons
 
-const HeroSection = () => {
-    return (
-        <div className=" mx-auto px-4 py-24 lg:py-32 bg-black w-full">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="text-center pl-0 lg:pl-8 md:text-left" >
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in ">
-                        Experience <span className="text-blue-600"> Unmatched Sound </span> Quality
-                    </h1>
-                    <p className="text-gray-300 text-lg mb-8 animate-fade-in-delay">
-                        Immerse yourself in crystal-clear audio with our premium headphones collection.
-                    </p>
-                    <Link href="/dashboard">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 animate-fade-in-up flex items-center mx-auto md:mx-0">
-                            Shop Now
-                            <ArrowRight className="ml-2" />
-                        </button>
-                    </Link>
+const images = [
+  { src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg", route: "/dashboard" },
+  { src: "https://ik.imagekit.io/9kdymtz6f/soundwave/freepik__expand__55239.png?updatedAt=1739268584600", route: "/dashboard" },
+];
 
-                </div>
+export default function Herosec() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-                <div className="flex justify-center items-center py-8">
-                    <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12 h-96 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg animate-fade-in flex items-center justify-center">
-                        <Carousel />
-                    </div>
-                </div>
+  // Automatically change slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // 3000ms = 3 seconds
 
+    // Clear interval on component unmount to prevent memory leaks
+    return () => clearInterval(interval);
+  }, []);
 
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-            </div>
-        </div>
-    );
-};
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
 
-export default HeroSection;
+  const goToSlide = (index: any) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <div className="relative w-full">
+      <div className="relative h-60 mt-16 md:h-[87vh] overflow-hidden rounded-lg">
+        {images.map((image, index) => (
+          <Link key={index} href={image.route}>
+            <img
+              src={image.src}
+              alt={`Slide ${index + 1}`}
+              className={`absolute w-full transition-opacity duration-700 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </Link>
+        ))}
+      </div>
+      <div className="absolute bottom-5 left-1/2 flex space-x-3 -translate-x-1/2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              index === currentIndex ? "bg-white" : "bg-gray-400"
+            }`}
+            onClick={() => goToSlide(index as any)}
+          />
+        ))}
+      </div>
+      <button
+        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
+        onClick={prevSlide}
+      >
+        <span className="w-10 h-10 bg-white/40 rounded-full flex items-center justify-center hover:bg-white/50">
+          <ChevronLeft size={24} color="white" /> {/* Custom left arrow */}
+        </span>
+      </button>
+      <button
+        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
+        onClick={nextSlide}
+      >
+        <span className="w-10 h-10 bg-white/40 rounded-full flex items-center justify-center hover:bg-white/50">
+          <ChevronRight size={24} color="white" /> {/* Custom right arrow */}
+        </span>
+      </button>
+    </div>
+  );
+}

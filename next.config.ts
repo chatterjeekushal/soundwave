@@ -1,13 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-
-   /* ignore build errors */
-   ignoreBuildErrors: true,
+ 
 
   images: {
-    domains: ["images.unsplash.com","images.pexels.com"],
+    domains: ["images.unsplash.com","images.pexels.com","img.freepik.com","ik.imagekit.io","res.cloudinary.com","flowbite.s3.amazonaws.com"],
   },
   eslint:{
     ignoreDuringBuilds: true,

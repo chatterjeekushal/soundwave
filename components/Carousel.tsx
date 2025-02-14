@@ -1,68 +1,76 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const Carousel = () => {
+const images = [
+  { src: "/docs/images/carousel/carousel-1.svg", route: "/product/1" },
+  { src: "/docs/images/carousel/carousel-2.svg", route: "/product/2" },
+  { src: "/docs/images/carousel/carousel-3.svg", route: "/product/3" },
+  { src: "/docs/images/carousel/carousel-4.svg", route: "/product/4" },
+  { src: "/docs/images/carousel/carousel-5.svg", route: "/product/5" },
+];
+
+export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const router = useRouter();
 
-  const images = [
-    'https://images.pexels.com/photos/6179026/pexels-photo-6179026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  ];
-
-  // Function to go to the next slide
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-  }, [images.length]);
-
-  // Function to go to the previous slide
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  // Auto-slide every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(goToNext, 3000);
-    return () => clearInterval(interval);
-  }, [goToNext]);
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const goToSlide = (index : number) => {
+    setCurrentIndex(index);
+  };
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto" id="animation-carousel" data-carousel="static">
-      {/* Image Container */}
-      <div className="relative h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full">
+      <div className="relative h-80 md:h-96 overflow-hidden rounded-lg">
         {images.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === currentIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <Image src={image} alt={`carousel-item-${index}`} fill className="object-cover" />
-          </div>
+          <Link key={index} href={image.route}>
+            <img
+              src={image.src}
+              alt={`Slide ${index + 1}`}
+              className={`absolute w-full transition-opacity duration-700 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </Link>
         ))}
       </div>
-
-      {/* Left (Previous) Button */}
+      <div className="absolute bottom-5 left-1/2 flex space-x-3 -translate-x-1/2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              index === currentIndex ? "bg-white" : "bg-gray-400"
+            }`}
+            onClick={() => goToSlide(index)}
+          />
+        ))}
+      </div>
       <button
-        type="button"
-        className="absolute top-1/2 left-4 z-10 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition"
-        onClick={goToPrevious}
+        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
+        onClick={prevSlide}
       >
-        
+        <span className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center hover:bg-white/50">
+          &#8592;
+        </span>
       </button>
-
-      {/* Right (Next) Button */}
       <button
-        type="button"
-        className="absolute top-1/2 right-4 z-10 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition"
-        onClick={goToNext}
+        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
+        onClick={nextSlide}
       >
-        
+        <span className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center hover:bg-white/50">
+          &#8594;
+        </span>
       </button>
     </div>
   );
-};
-
-export default Carousel;
+}
