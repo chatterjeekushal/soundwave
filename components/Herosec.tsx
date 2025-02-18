@@ -37,7 +37,7 @@ export default function Herosec() {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full lg:w-[96%]  m-auto">
       <div className="relative h-60 mt-16 md:h-[87vh] overflow-hidden rounded-lg">
         {images.map((image, index) => (
           <Link key={index} href={image.route}>
@@ -66,7 +66,7 @@ export default function Herosec() {
         className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
         onClick={prevSlide}
       >
-        <span className="w-10 h-10 bg-white/40 rounded-full flex items-center justify-center hover:bg-white/50">
+        <span className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-white/50">
           <ChevronLeft size={24} color="white" /> {/* Custom left arrow */}
         </span>
       </button>
@@ -74,7 +74,7 @@ export default function Herosec() {
         className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
         onClick={nextSlide}
       >
-        <span className="w-10 h-10 bg-white/40 rounded-full flex items-center justify-center hover:bg-white/50">
+        <span className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-white/50">
           <ChevronRight size={24} color="white" /> {/* Custom right arrow */}
         </span>
       </button>

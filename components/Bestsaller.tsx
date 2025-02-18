@@ -1,5 +1,5 @@
 
-import { Carousel, CarouselSlide,} from '@mantine/carousel';
+import { Carousel, CarouselSlide} from '@mantine/carousel';
 import ProductCard from "./ui/product_card";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 function Bestsaller() {

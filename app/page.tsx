@@ -8,6 +8,7 @@ import Bestsaller from "@/components/Bestsaller";
 import ProductShowcase from "@/components/Priamem_product";
 import CustomerReviews from "@/components/Costomerreview";
 import WhyChooseSoundWave from "@/components/Why_choose_us";
+import Join_the_trip from "@/components/Join_the_trip";
 export default function Home() {
   return (
     
@@ -22,6 +23,8 @@ export default function Home() {
       <Bestsaller />
 
       <ProductShowcase />
+
+      <Join_the_trip />
 
       <CustomerReviews />
 

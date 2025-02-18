@@ -7,6 +7,7 @@ import { UserButton } from '@clerk/nextjs';
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [userlogo, setUserlogo] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
