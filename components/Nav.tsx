@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, ShoppingCart, User, Search } from 'lucide-react';
+import { Menu, ShoppingCart, Search } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
 
 const Navbar = () => {
