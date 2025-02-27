@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
  
 
   images: {
-    domains: ["images.unsplash.com","images.pexels.com","img.freepik.com","ik.imagekit.io","res.cloudinary.com","flowbite.s3.amazonaws.com"],
+    domains: ["images.unsplash.com","images.pexels.com","img.freepik.com","ik.imagekit.io","res.cloudinary.com","flowbite.s3.amazonaws.com","www.sennheiser.com","cellecor.com","flowbite.com"],
   },
   eslint:{
     ignoreDuringBuilds: true,

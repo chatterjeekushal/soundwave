@@ -9,6 +9,8 @@ import ProductShowcase from "@/components/Priamem_product";
 import CustomerReviews from "@/components/Costomerreview";
 import WhyChooseSoundWave from "@/components/Why_choose_us";
 import Join_the_trip from "@/components/Join_the_trip";
+import CompareDemo from "@/components/CompareDemo";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
     
@@ -26,9 +28,13 @@ export default function Home() {
 
       <Join_the_trip />
 
+      <CompareDemo />
+
       <CustomerReviews />
 
       <WhyChooseSoundWave />
+
+      <Footer />
 
     </div>
   );
