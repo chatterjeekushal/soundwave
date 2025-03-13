@@ -1,9 +1,11 @@
 
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
 interface ProductCardProps {
-  src: string;
+  src: any;
   name: string;
   price: number;
   stars: number;
@@ -13,8 +15,11 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ src, name, price, stars, rating }) => {
+
+  console.log("name", name);
+
   return (
-    <div className="relative flex w-max-xl flex-col overflow-hidden rounded-lg border border-gray-300  shadow-md">
+    <div className="relative flex w-full flex-col overflow-hidden rounded-lg border border-gray-300  shadow-md">
       <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
         <Image
           className="object-cover w-full h-full"
@@ -40,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ src, name, price, stars, rati
             {Array.from({ length: stars }).map((_, index) => (
               <svg
                 key={index}
-                className="h-5 w-5 text-yellow-400"
+                className="h-5 w-5 text-yellow-400 "
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
