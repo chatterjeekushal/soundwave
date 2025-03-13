@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, ShoppingCart, Search } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
-
+import {NavigationMenuDemo} from "@/components/ui/style_nav_manu";
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const [userlogo, setUserlogo] = useState(false);
@@ -35,8 +35,8 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#" className="text-gray-700 hover:text-gray-900">Home</a>
-            <a href="#" className="text-gray-700 hover:text-gray-900">Shop</a>
-            <a href="#" className="text-gray-700 hover:text-gray-900">Categories</a>
+            <a href="shop_page" className="text-gray-700 hover:text-gray-900">Shop</a>
+            <NavigationMenuDemo />
             <a href="#" className="text-gray-700 hover:text-gray-900">About</a>
             <a href="#" className="text-gray-700 hover:text-gray-900">Contact</a>
           </div>
