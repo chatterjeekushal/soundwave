@@ -13,8 +13,10 @@ import CompareDemo from "@/components/CompareDemo";
 import Footer from "@/components/Footer";
 export default function Home() {
   return (
+
     
-    <div className="w-full overflow-x-hidden mx-auto ">
+    
+    <div className="w-full mx-auto overflow-x-hidden">
      
       <Herosec />
 
@@ -37,5 +39,6 @@ export default function Home() {
       <Footer />
 
     </div>
+    
   );
 }

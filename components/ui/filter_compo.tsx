@@ -20,57 +20,28 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import { useDispatch } from "react-redux"
+import { getpricefiltervalue } from "@/lib/store/features/slice"
+
 const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
+  { value: "all", label: "All products" },
+  { value: "100-200", label: "Price: 100-200" },
+  { value: "300-400", label: "Price: 300-400" },
+  { value: "500-600", label: "Price: 500-600" },
 ]
-
-
-const frameworks2 = [
-    {
-      value: "next.js",
-      label: "Next.js",
-    },
-    {
-      value: "sveltekit",
-      label: "SvelteKit",
-    },
-    {
-      value: "nuxt.js",
-      label: "Nuxt.js",
-    },
-    {
-      value: "remix",
-      label: "Remix",
-    },
-    {
-      value: "astro",
-      label: "Astro",
-    },
-  ]
-
 
 export function ComboboxDemo() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
+  
+  const dispatch = useDispatch() // Correct Redux dispatch usage
+
+  const handleSelect = (selectedValue: string) => {
+    console.log(selectedValue,"selectedValue")
+    setValue(selectedValue)
+    dispatch(getpricefiltervalue(selectedValue)) // Dispatch action correctly
+    setOpen(false)
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -79,28 +50,26 @@ export function ComboboxDemo() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="justify-between w-[200px]"
+
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            : "Select price range..."}
+          <ChevronsUpDown className="h-4 w-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="p-0 w-[200px]">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search price range..." />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>No price range found.</CommandEmpty>
             <CommandGroup>
               {frameworks.map((framework) => (
                 <CommandItem
                   key={framework.value}
                   value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
+                  onSelect={() => handleSelect(framework.value)}
                 >
                   <Check
                     className={cn(
@@ -118,5 +87,3 @@ export function ComboboxDemo() {
     </Popover>
   )
 }
-
-

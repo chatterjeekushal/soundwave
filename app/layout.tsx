@@ -22,6 +22,7 @@ import {
 } from '@clerk/nextjs'
 
 import Navbar from '@/components/Nav';
+import StoreProvider from "./storeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,12 +51,14 @@ export default function RootLayout({
        
         <ColorSchemeScript />
       </head>
+      <StoreProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         <MantineProvider>{children}</MantineProvider>
       </body>
+      </StoreProvider>
     </html>
     </ClerkProvider>
   );

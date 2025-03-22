@@ -1,12 +1,12 @@
 
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ImagesSliderDemo } from "@/components/shop_hero";
 import ProductCard from "@/components/ui/product_card";
-import { ComboboxDemo } from "@/components/ui/filter_compo";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { ComboboxDemo } from "@/components/ui/filter_compo";
+import { useAppSelector } from "@/lib/store/hooks";
 
 interface Product {
     category: string;
@@ -24,35 +24,29 @@ interface Product {
 }
 
 export default function ShopPage() {
-
-
-
     const [products, setProducts] = useState<Product[]>([]);
+    
+    // Retrieve price filter value from Redux state
+    const priceRange = useAppSelector((state) => state.getpricefiltervalue.value);
+
+    console.log(priceRange,"priceRange")
 
     useEffect(() => {
-
         async function fetchData() {
-
             try {
-                const response = await axios.get('/api/shop_page')
-                if (response.data && response.data.products) {
-                    // console.log("API Response:", response.data);
-                    // console.log(response.data.products.length);
+                const response = await axios.get(`/api/shop_page?data=${priceRange}`);
+                if (response.data?.products) {
                     setProducts(response.data.products);
-
                 } else {
                     console.error("Invalid API response format:", response.data);
                 }
             } catch (error) {
-                console.log(error)
+                console.error("Error fetching products:", error);
             }
         }
+
         fetchData();
-
-
-    }, [])
-
-
+    }, [priceRange]); // Dependency ensures re-fetch when price filter changes
 
     return (
         <div className="container mx-auto px-4 md:px-8">
@@ -61,29 +55,30 @@ export default function ShopPage() {
                 <ImagesSliderDemo />
             </div>
 
-            {/* Filter and Sort Section */}
-            <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-
-                <ComboboxDemo />
-
-                <ComboboxDemo />
-
+            {/* Filter Section */}
+            <div className="flex flex-wrap justify-start gap-4 items-center mt-10">
+                <ComboboxDemo  />
+                
             </div>
 
             {/* Product Grid Section */}
             <div className="mt-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map((product, index) => (
-                        <ProductCard
-                            key={index}
-                            src={product.images?.[0] || "/default-image.jpg"} // Fallback image
-                            name={product.title}
-                            price={product.price}
-                            rating={product.rating.toString()}
-                            description={product.description}
-                            stars={product.rating}
-                        />
-                    ))}
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {products.length > 0 ? (
+                        products.map((product, index) => (
+                            <ProductCard
+                                key={index}
+                                src={product.images?.[0] || "/default-image.jpg"} // Fallback image
+                                name={product.title}
+                                price={product.price}
+                                rating={product.rating.toString()}
+                                description={product.description}
+                                stars={product.rating}
+                            />
+                        ))
+                    ) : (
+                        <p className="text-center col-span-full">No products found.</p>
+                    )}
                 </div>
             </div>
         </div>
