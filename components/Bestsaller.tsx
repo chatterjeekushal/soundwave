@@ -68,7 +68,7 @@ function Bestseller() {
           loop
           align="start"
           slidesToScroll={1}
-          className="flex items-center w-full justify-center gap-32 text-red-600"
+          className="flex items-center w-full justify-center gap-32  text-red-600"
         >
           {products.map((product, index) => (
             <CarouselSlide

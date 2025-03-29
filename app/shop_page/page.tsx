@@ -7,6 +7,9 @@ import ProductCard from "@/components/ui/product_card";
 import axios from "axios";
 import { ComboboxDemo } from "@/components/ui/filter_compo";
 import { useAppSelector } from "@/lib/store/hooks";
+import FilterCategory from "@/components/ui/filter_catagory";  // ✅ Corrected import
+import Link from 'next/link'
+
 
 interface Product {
     category: string;
@@ -28,15 +31,26 @@ export default function ShopPage() {
     
     // Retrieve price filter value from Redux state
     const priceRange = useAppSelector((state) => state.getpricefiltervalue.value);
+    const catagory= useAppSelector((state) => state.getfiltercatagoryvalue.value);
 
     console.log(priceRange,"priceRange")
+    console.log(catagory,"catagory")
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get(`/api/shop_page?data=${priceRange}`);
+                const response = await axios.get(`/api/shop_page?price=${priceRange}&catagory=${catagory}`);
                 if (response.data?.products) {
+
+                    if (response.data.products.length === 0) {
+                        
+                    }
+                    // Check if the response data is in the expected format
+
+                    console.log(response.data.products);
+
                     setProducts(response.data.products);
+
                 } else {
                     console.error("Invalid API response format:", response.data);
                 }
@@ -46,7 +60,7 @@ export default function ShopPage() {
         }
 
         fetchData();
-    }, [priceRange]); // Dependency ensures re-fetch when price filter changes
+    }, [priceRange,catagory]); // Dependency ensures re-fetch when price filter changes
 
     return (
         <div className="container mx-auto px-4 md:px-8">
@@ -58,6 +72,7 @@ export default function ShopPage() {
             {/* Filter Section */}
             <div className="flex flex-wrap justify-start gap-4 items-center mt-10">
                 <ComboboxDemo  />
+                <FilterCategory />
                 
             </div>
 
@@ -66,15 +81,25 @@ export default function ShopPage() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {products.length > 0 ? (
                         products.map((product, index) => (
-                            <ProductCard
-                                key={index}
-                                src={product.images?.[0] || "/default-image.jpg"} // Fallback image
-                                name={product.title}
-                                price={product.price}
-                                rating={product.rating.toString()}
-                                description={product.description}
-                                stars={product.rating}
-                            />
+                           
+                            
+                                
+                            <Link 
+                            key={index} 
+                            href={`/product_details_view/${encodeURIComponent(product.title)}`} 
+                            className="block"
+                          >
+                              <ProductCard
+                                  src={product.images?.[0] || "/default-image.jpg"}
+                                  name={product.title}
+                                  price={product.price}
+                                  rating={product.rating.toString()}
+                                  description={product.description}
+                                  stars={product.rating}
+                              />
+                          </Link>
+                            
+                            
                         ))
                     ) : (
                         <p className="text-center col-span-full">No products found.</p>

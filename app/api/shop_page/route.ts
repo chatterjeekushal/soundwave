@@ -10,34 +10,39 @@ export async function GET(req: Request) {
     await dbConnect();
 
     const { searchParams } = new URL(req.url);
-    const foo = searchParams.get("data");
+    const price = searchParams.get("price");
+    const catagory = searchParams.get("catagory");
 
-    console.log("foo:", foo);
+    console.log(price, "price data")
+    
+
+    
+      // default value for price is "all"
 
     try {
         
        // fetch database all data last to first
 
-       if (foo === "all") {
+       if (price === "all" && catagory === "all") {
 
         const products = await Product.find().sort({ createdAt: -1 });  // sort by createdAt in descending order       
 
         return Response.json({message: "all products successfully", products: products},{status: 200}); 
 
 
-       }else if (foo === "100-200") {
+       }else if (price=="100-200") {
 
         const products = await Product.find({price: {$gte: 100, $lte: 200}}).sort({createdAt: -1});  // sort by createdAt in descending order       
 
         return Response.json({message: "all products successfully", products: products},{status: 200}); 
 
-       }else if (foo === "300-400") {
+       }else if (price === "300-400") {
 
         const products = await Product.find({price: {$gte: 300, $lte: 400}}).sort({createdAt: -1});  // sort by createdAt in descending order       
 
         return Response.json({message: "all products successfully", products: products},{status: 200}); 
 
-       }else if (foo === "500-600") {
+       }else if (price === "500-600") {
 
         const products = await Product.find({price: {$gte: 500, $lte: 600}}).sort({createdAt: -1});  // sort by createdAt in descending order       
 

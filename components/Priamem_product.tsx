@@ -72,64 +72,64 @@ const ProductShowcase = () => {
     };
 
     return (
-        <div className="w-full mx-auto mt-16 lg:mt-24">
+        <div className="w-full mx-auto mt-16 lg:mt-24 max-w-screen-2xl">
             {/* Main Product Showcase */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 w-full rounded-lg p-0 lg:p-12 lg:bg-slate-200 bg-neutral-200">
                 <div className="order-2 lg:order-1 px-4 lg:px-0">
-                    <span className="text-blue-600 font-semibold mb-4 block text-center">Premium Quality</span>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Premium Noise Cancelling Headphones</h2>
-                    <div className="space-y-4 mb-8 w-full">
+                    <span className="text-blue-600 font-semibold mb-4 block text-center 2xl:text-lg">Premium Quality</span>
+                    <h2 className="text-3xl md:text-4xl 2xl:text-5xl font-bold mb-6 text-center">Premium Noise Cancelling Headphones</h2>
+                    <div className="space-y-4 mb-8 w-full 2xl:space-y-6">
                         {/* Product Features */}
                         <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <BatteryFull className="text-blue-600 w-6 h-6" />
+                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 2xl:w-14 2xl:h-14">
+                                <BatteryFull className="text-blue-600 w-6 h-6 2xl:w-8 2xl:h-8" />
                             </div>
                             <div>
-                                <h3 className="font-semibold mb-1">40H Battery Life</h3>
-                                <p className="text-gray-600">Extended playtime for uninterrupted listening experience</p>
+                                <h3 className="font-semibold mb-1 2xl:text-xl">40H Battery Life</h3>
+                                <p className="text-gray-600 2xl:text-lg">Extended playtime for uninterrupted listening experience</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <Volume2 className="text-blue-600 w-6 h-6" />
+                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 2xl:w-14 2xl:h-14">
+                                <Volume2 className="text-blue-600 w-6 h-6 2xl:w-8 2xl:h-8" />
                             </div>
                             <div>
-                                <h3 className="font-semibold mb-1">Active Noise Cancellation</h3>
-                                <p className="text-gray-600">Block out external noise for immersive sound</p>
+                                <h3 className="font-semibold mb-1 2xl:text-xl">Active Noise Cancellation</h3>
+                                <p className="text-gray-600 2xl:text-lg">Block out external noise for immersive sound</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <Bluetooth className="text-blue-600 w-6 h-6" />
+                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 2xl:w-14 2xl:h-14">
+                                <Bluetooth className="text-blue-600 w-6 h-6 2xl:w-8 2xl:h-8" />
                             </div>
                             <div>
-                                <h3 className="font-semibold mb-1">Bluetooth 5.0</h3>
-                                <p className="text-gray-600">Stable connection with extended range</p>
+                                <h3 className="font-semibold mb-1 2xl:text-xl">Bluetooth 5.0</h3>
+                                <p className="text-gray-600 2xl:text-lg">Stable connection with extended range</p>
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center gap-4 mb-8 ml-4">
+                    <div className="flex items-center gap-4 mb-8 ml-4 2xl:gap-6">
                         <div>
-                            <span className="block text-3xl font-bold">$299.99</span>
-                            <span className="text-green-600">Free Shipping</span>
+                            <span className="block text-3xl font-bold 2xl:text-4xl">$299.99</span>
+                            <span className="text-green-600 2xl:text-lg">Free Shipping</span>
                         </div>
-                        <button className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors">
+                        <button className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors 2xl:px-10 2xl:py-4 2xl:text-lg">
                             Add to Cart
                         </button>
                     </div>
-                    <div className="flex items-center gap-6 ml-2 mb-5">
+                    <div className="flex items-center gap-6 ml-2 mb-5 2xl:gap-8">
                         <div className="flex items-center gap-2">
-                            <i className="fa-solid fa-star text-yellow-400"></i>
-                            <span className="font-semibold">4.9/5.0</span>
+                            <i className="fa-solid fa-star text-yellow-400 2xl:text-xl"></i>
+                            <span className="font-semibold 2xl:text-xl">4.9/5.0</span>
                         </div>
                         <div className="flex -space-x-2">
-                            <span className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-sm">+99</span>
+                            <span className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-sm 2xl:w-10 2xl:h-10 2xl:text-base">+99</span>
                         </div>
                     </div>
                 </div>
                 <div className="order-1 lg:order-2 w-full border rounded-lg">
                     <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg flex items-center justify-center border ">
-                        <div className="relative w-full h-[500px] border rounded-lg"
+                        <div className="relative w-full h-[500px] border rounded-lg 2xl:h-[900px]"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                         >
@@ -164,17 +164,17 @@ const ProductShowcase = () => {
                             {/* Product Features Tooltips */}
                             {!isSmallScreen && !ishover && (
                                 <>
-                                    <div className="absolute top-1/4 left-1/4 bg-white p-3 rounded-xl shadow-lg">
-                                        <Waves className="text-blue-600 w-5 h-5" />
-                                        <span className="text-sm font-medium ml-2">Custom EQ</span>
+                                    <div className="absolute top-1/4 left-1/4 bg-white p-3 rounded-xl shadow-lg 2xl:p-4">
+                                        <Waves className="text-blue-600 w-5 h-5 2xl:w-6 2xl:h-6" />
+                                        <span className="text-sm font-medium ml-2 2xl:text-base">Custom EQ</span>
                                     </div>
-                                    <div className="absolute top-1/2 right-8 bg-white p-3 rounded-xl shadow-lg">
-                                        <Sliders className="text-blue-600 w-5 h-5" />
-                                        <span className="text-sm font-medium ml-2">Touch Controls</span>
+                                    <div className="absolute top-1/2 right-8 bg-white p-3 rounded-xl shadow-lg 2xl:p-4">
+                                        <Sliders className="text-blue-600 w-5 h-5 2xl:w-6 2xl:h-6" />
+                                        <span className="text-sm font-medium ml-2 2xl:text-base">Touch Controls</span>
                                     </div>
-                                    <div className="absolute bottom-1/4 left-1/4 bg-white p-3 rounded-xl shadow-lg">
-                                        <Mic className="text-blue-600 w-5 h-5" />
-                                        <span className="text-sm font-medium ml-2">HD Voice</span>
+                                    <div className="absolute bottom-1/4 left-1/4 bg-white p-3 rounded-xl shadow-lg 2xl:p-4">
+                                        <Mic className="text-blue-600 w-5 h-5 2xl:w-6 2xl:h-6" />
+                                        <span className="text-sm font-medium ml-2 2xl:text-base">HD Voice</span>
                                     </div>
                                 </>
                             )}
@@ -184,26 +184,26 @@ const ProductShowcase = () => {
             </div>
 
             {/* Additional Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-0">
-                <div className="bg-white p-6 rounded-xl text-center">
-                    <Truck className="text-blue-600 w-8 h-8 mx-auto mb-4" />
-                    <h3 className="font-semibold mb-2">Fast Delivery</h3>
-                    <p className="text-gray-600 text-sm">Free shipping on orders over $50</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-0 2xl:gap-8">
+                <div className="bg-white p-6 rounded-xl text-center 2xl:p-8">
+                    <Truck className="text-blue-600 w-8 h-8 mx-auto mb-4 2xl:w-10 2xl:h-10" />
+                    <h3 className="font-semibold mb-2 2xl:text-xl">Fast Delivery</h3>
+                    <p className="text-gray-600 text-sm 2xl:text-base">Free shipping on orders over $50</p>
                 </div>
-                <div className="bg-white p-6 rounded-xl text-center">
-                    <Shield className="text-blue-600 w-8 h-8 mx-auto mb-4" />
-                    <h3 className="font-semibold mb-2">2 Years Warranty</h3>
-                    <p className="text-gray-600 text-sm">Full coverage for peace of mind</p>
+                <div className="bg-white p-6 rounded-xl text-center 2xl:p-8">
+                    <Shield className="text-blue-600 w-8 h-8 mx-auto mb-4 2xl:w-10 2xl:h-10" />
+                    <h3 className="font-semibold mb-2 2xl:text-xl">2 Years Warranty</h3>
+                    <p className="text-gray-600 text-sm 2xl:text-base">Full coverage for peace of mind</p>
                 </div>
-                <div className="bg-white p-6 rounded-xl text-center">
-                    <RotateCcw className="text-blue-600 w-8 h-8 mx-auto mb-4" />
-                    <h3 className="font-semibold mb-2">Easy Returns</h3>
-                    <p className="text-gray-600 text-sm">30-day money-back guarantee</p>
+                <div className="bg-white p-6 rounded-xl text-center 2xl:p-8">
+                    <RotateCcw className="text-blue-600 w-8 h-8 mx-auto mb-4 2xl:w-10 2xl:h-10" />
+                    <h3 className="font-semibold mb-2 2xl:text-xl">Easy Returns</h3>
+                    <p className="text-gray-600 text-sm 2xl:text-base">30-day money-back guarantee</p>
                 </div>
-                <div className="bg-white p-6 rounded-xl text-center">
-                    <Headset className="text-blue-600 w-8 h-8 mx-auto mb-4" />
-                    <h3 className="font-semibold mb-2">24/7 Support</h3>
-                    <p className="text-gray-600 text-sm">Always here to help you</p>
+                <div className="bg-white p-6 rounded-xl text-center 2xl:p-8">
+                    <Headset className="text-blue-600 w-8 h-8 mx-auto mb-4 2xl:w-10 2xl:h-10" />
+                    <h3 className="font-semibold mb-2 2xl:text-xl">24/7 Support</h3>
+                    <p className="text-gray-600 text-sm 2xl:text-base">Always here to help you</p>
                 </div>
             </div>
         </div>

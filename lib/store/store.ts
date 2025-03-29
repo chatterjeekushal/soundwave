@@ -2,12 +2,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { counterSlice } from './features/slice'
 
+
 export const createstore = () => {
 
   return configureStore({
     reducer: {
   
-      getpricefiltervalue: counterSlice.reducer
+      getpricefiltervalue: counterSlice.reducer,
+      getfiltercatagoryvalue: counterSlice.reducer
   
     },
   })
