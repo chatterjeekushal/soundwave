@@ -27,6 +27,7 @@ interface Product {
 }
 
 export default function ShopPage() {
+    
     const [products, setProducts] = useState<Product[]>([]);
     
     // Retrieve price filter value from Redux state
@@ -37,6 +38,7 @@ export default function ShopPage() {
     console.log(catagory,"catagory")
 
     useEffect(() => {
+
         async function fetchData() {
             try {
                 const response = await axios.get(`/api/shop_page?price=${priceRange}&catagory=${catagory}`);
@@ -47,7 +49,7 @@ export default function ShopPage() {
                     }
                     // Check if the response data is in the expected format
 
-                    console.log(response.data.products);
+                    // console.log(response.data.products);
 
                     setProducts(response.data.products);
 
@@ -63,46 +65,41 @@ export default function ShopPage() {
     }, [priceRange,catagory]); // Dependency ensures re-fetch when price filter changes
 
     return (
+     
         <div className="container mx-auto px-4 md:px-8">
             {/* Hero Slider Section */}
-            <div className="w-full">
+            <div className="w-full h-full bg-gray-200 rounded-lg overflow-hidden mt-20">
                 <ImagesSliderDemo />
             </div>
 
             {/* Filter Section */}
-            <div className="flex flex-wrap justify-start gap-4 items-center mt-10">
-                <ComboboxDemo  />
+            <div className="flex flex-wrap justify-between gap-4 items-center mt-10">
+                <ComboboxDemo />
                 <FilterCategory />
-                
             </div>
 
             {/* Product Grid Section */}
-            <div className="mt-10">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {products.length > 0 ? (
                         products.map((product, index) => (
-                           
-                            
-                                
                             <Link 
-                            key={index} 
-                            href={`/product_details_view/${encodeURIComponent(product.title)}`} 
-                            className="block"
-                          >
-                              <ProductCard
-                                  src={product.images?.[0] || "/default-image.jpg"}
-                                  name={product.title}
-                                  price={product.price}
-                                  rating={product.rating.toString()}
-                                  description={product.description}
-                                  stars={product.rating}
-                              />
-                          </Link>
-                            
-                            
+                                key={index} 
+                                href={`/product_details_view/${encodeURIComponent(product.title)}`} 
+                                className="block"
+                            >
+                                <ProductCard
+                                    src={product.images?.[0] || "/default-image.jpg"}
+                                    name={product.title}
+                                    price={product.price}
+                                    rating={product.rating.toString()}
+                                    description={product.description}
+                                    stars={product.rating}
+                                />
+                            </Link>
                         ))
                     ) : (
-                        <p className="text-center col-span-full">No products found.</p>
+                        <p className="text-center col-span-full text-gray-500 text-xl">No products found.</p>
                     )}
                 </div>
             </div>

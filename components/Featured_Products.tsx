@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react"; 
 import ProductCard from "./ui/product_card";
 import axios from "axios";
+import Link from "next/link";
 
 interface Product {
   category: string;
@@ -71,6 +72,8 @@ const FeaturedProducts = () => {
               key={index}
               className="gap-20 sm:gap-8 flex flex-col justify-center sm:w-1/2 md:w-1/3 lg:w-1/4"
             >
+              <Link href={`/product_details_view/${product.title}`} className="cursor-pointer">
+              
               <ProductCard
                 src={product.images[0]}
                 name={product.title}
@@ -78,6 +81,8 @@ const FeaturedProducts = () => {
                 stars={product.rating}
                 rating={product.rating.toString()}
               />
+
+              </Link>
            
             </div>
           ))}

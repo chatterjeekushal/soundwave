@@ -24,7 +24,7 @@ const ProductShowcase = () => {
     const [previewerror, setPreviewerror] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-    const publicurl = "https://res.cloudinary.com/dqhef4w9b/video/upload/v1739433432/8003613-uhd_2160_3840_25fps_fexbk9.mp4";
+    const publicurl = "https://res.cloudinary.com/dqhef4w9b/video/upload/v1743265568/mixkit-woman-takes-her-headphones-to-listen-to-music-51134-full-hd_akbrww.mp4";
     const thamnelurl = "https://images.pexels.com/photos/10292808/pexels-photo-10292808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
     // Check screen size on component mount and resize

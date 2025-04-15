@@ -13,7 +13,7 @@ export async function GET(req: Request) {
     const price = searchParams.get("price");
     const catagory = searchParams.get("catagory");
 
-    console.log(price, "price data")
+    // console.log(price, "price data")
     
 
     
