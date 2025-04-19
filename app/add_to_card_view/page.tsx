@@ -2,29 +2,47 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useSearchParams } from "next/navigation"
-import axios from "axios"
+import { useSearchParams } from 'next/navigation'
+import axios from 'axios'
 
 function Page() {
   const searchParams = useSearchParams()
 
-  const productid = searchParams.get("product_id")
-  const product_details = searchParams.get("product_details")
+  const productid = searchParams.get('product_id')
+  const product_details = searchParams.get('product_details')
 
   useEffect(() => {
-    async function fetchData() {
+    let isMounted = true // ✅ ensures component is still active
+    const controller = new AbortController() // ✅ cancel API call if needed
+
+    const sendToApi = async () => {
+      if (!productid || !product_details) return
+
       try {
         const response = await axios.post(
-          `/api/add_to_card?product_id=${productid}&product_details=${product_details}`
+          `/api/addtocard?product_id=${productid}&product_details=${product_details}`,
+          {},
+          { signal: controller.signal }
         )
-        console.log("Response:", response.data)
+        if (isMounted) {
+          console.log('Response:', response.data)
+        }
       } catch (error) {
-        console.error("Error:", error)
+        if (axios.isCancel(error)) {
+          console.log('API call cancelled')
+        } else {
+          console.error('Error:', error)
+        }
       }
     }
 
-    fetchData()
-  }, [])
+    sendToApi()
+
+    return () => {
+      isMounted = false
+      controller.abort() // ✅ clean up on unmount or rerun
+    }
+  }, [productid, product_details])
 
   return (
     <div>
