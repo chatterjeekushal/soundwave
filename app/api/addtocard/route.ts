@@ -38,12 +38,16 @@ export async function POST(req: Request) {
             user_id: userId,
         });
 
+
+        
+
         if (existingProduct) {
 
           
             const allProducts = await addtoCardmodel.find({ user_id: userId }).populate("product_details");
+
             return NextResponse.json(
-                { message: "Product removed from cart", data: allProducts }, 
+                { message: "Product already exists in cart", data: allProducts }, 
                 { status: 200 }
             );
         }

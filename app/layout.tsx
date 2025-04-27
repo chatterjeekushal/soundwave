@@ -8,7 +8,7 @@ import "./globals.css";
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 
-
+import { Toaster } from "@/components/ui/toaster"
 
 
 
@@ -57,6 +57,7 @@ export default function RootLayout({
       >
         <Navbar />
         <MantineProvider>{children}</MantineProvider>
+        <Toaster />
       </body>
       </StoreProvider>
     </html>
