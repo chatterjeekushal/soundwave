@@ -4,7 +4,7 @@ import Add_to_card_full_page from '@/components/Add_to_card_full_page'
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading cart...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Add_to_card_full_page />
     </Suspense>
   )
