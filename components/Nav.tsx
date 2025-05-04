@@ -2,13 +2,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, ShoppingCart, Search } from 'lucide-react';
+import { Menu, ShoppingCart } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
 import { NavigationMenuDemo } from "@/components/ui/style_nav_manu";
 import { Search_component } from "@/components/Search";
+import { useUser } from '@clerk/nextjs';
+import Link from "next/link"
+ 
+import { Button } from "@/components/ui/button"
 
-const Navbar = () => {
+
+const  Navbar =  () => {
+
+
   const [scrolling, setScrolling] = useState(false);
+  
+  const { user, isLoaded } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +69,16 @@ const Navbar = () => {
               <Menu className="text-gray-700" />
             </button>
 
-            <UserButton />
+{/* // if user is exist then show userbutton else show login button */}
+            { user ? (
+              <UserButton />
+            ) : (
+              <Button asChild>
+              <Link href="/sign-in">Login</Link>
+            </Button>
+              
+            )}
+           
           </div>
         </div>
       </div>

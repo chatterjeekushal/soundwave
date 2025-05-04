@@ -7,8 +7,7 @@ import axios from 'axios'
 import Image from 'next/image'
 
 import { useToast } from "@/hooks/use-toast"
-import { Button } from "@/components/ui/button"
-import { ToastAction } from "@/components/ui/toast"
+
 
 interface ProductDetails {
   _id: string
