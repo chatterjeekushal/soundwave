@@ -58,7 +58,8 @@ export default function RootLayout({
         <Navbar />
         <MantineProvider>{children}</MantineProvider>
         <Toaster />
-      </body>
+       
+        </body>
       </StoreProvider>
     </html>
     </ClerkProvider>

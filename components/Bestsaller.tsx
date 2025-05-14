@@ -6,6 +6,7 @@ import ProductCard from "@/components/ui/product_card";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 interface Product {
   category: string;
@@ -75,6 +76,7 @@ function Bestseller() {
               className="flex ml-8 items-center justify-center gap-32 border border-white"
               key={index}
             >
+              <Link href={`/product_details_view/${product.title}`} className="cursor-pointer">
               <ProductCard
                 src={product.images?.[0] || "/default-image.jpg"} // Fallback image
                 name={product.title}
@@ -83,6 +85,7 @@ function Bestseller() {
                 description={product.description}
                 stars={product.rating}
               />
+              </Link>
             </CarouselSlide>
           ))}
         </Carousel>
