@@ -26,11 +26,13 @@ export async function POST(request: Request) {
 
     // Create Razorpay order
     const order = await razorpayInstance.orders.create({
-      amount:100*100,
+      amount: amount * 100, // Convert to paise
       currency: currency.toUpperCase(), // Ensure uppercase currency code
       receipt: receipt || `order_rcpt_${Date.now()}`, // Generate receipt if not provided
       notes: notes || {}, // Use provided notes or empty object
     });
+
+    // redirect to the payment page if the order is created successfully
 
     // Return the order details
     return NextResponse.json({
