@@ -25,6 +25,9 @@ export async function POST(req: Request) {
         const product_id = searchParams.get("product_id");
         const product_details = searchParams.get("product_details");
 
+        console.log("Received product_id:", product_id);
+        console.log("Received product_details:", product_details);
+
         if (!product_id || !product_details) {
             return NextResponse.json(
                 { message: "Product ID and details are required" }, 
@@ -38,13 +41,14 @@ export async function POST(req: Request) {
             user_id: userId,
         });
 
-
-        
-
         if (existingProduct) {
 
-          
+            // console.log("Product already exists in cart:", existingProduct);
+
             const allProducts = await addtoCardmodel.find({ user_id: userId }).populate("product_details");
+
+            // Return the existing products in the cart
+
 
             return NextResponse.json(
                 { message: "Product already exists in cart", data: allProducts }, 

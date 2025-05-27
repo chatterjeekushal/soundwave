@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface CounterState {
-  value: string
+  value: any
 }
 
 const initialState: CounterState = {
-  value: 'all',
+  value: 0,
 }
 
 export const counterSlice = createSlice({
@@ -22,10 +22,16 @@ export const counterSlice = createSlice({
     getfiltercatagoryvalue: (state, action: PayloadAction<string>) => {
       state.value = action.payload
     },
+
+    // update add to card value
+    getaddtocartvalue: (state, action: PayloadAction<string>) => {
+      state.value = action.payload
+    },
+
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { getpricefiltervalue, getfiltercatagoryvalue } = counterSlice.actions
+export const { getpricefiltervalue, getaddtocartvalue, getfiltercatagoryvalue } = counterSlice.actions
 
 export default counterSlice.reducer

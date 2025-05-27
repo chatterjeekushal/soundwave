@@ -9,7 +9,8 @@ export const createstore = () => {
     reducer: {
   
       getpricefiltervalue: counterSlice.reducer,
-      getfiltercatagoryvalue: counterSlice.reducer
+      getfiltercatagoryvalue: counterSlice.reducer,
+      getaddtocartvalue: counterSlice.reducer,
   
     },
   })

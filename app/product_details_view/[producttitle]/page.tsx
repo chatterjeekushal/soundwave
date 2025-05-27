@@ -5,7 +5,10 @@ import { useState, use, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
-
+import { useDispatch } from "react-redux"
+import { getaddtocartvalue } from "@/lib/store/features/slice"
+import { useRouter } from 'next/navigation';
+import { Card } from "@mantine/core";
 
 interface Product {
   _id: string;
@@ -34,8 +37,26 @@ const ProductPage = ({ params }: { params: Promise<{ producttitle: string }> }) 
   const producttitle_data = decodeURIComponent(producttitle);
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [razorpayLoaded, setRazorpayLoaded] = useState(false);
+  
+
+  const dispatch = useDispatch() // Correct Redux dispatch usage
+  const router = useRouter();
+
+const handleAddToCartvalue = (productid: string) => {
+  // go to onother url
+  // and add the value to the cart
+ router.push(`/add_to_card_view?product_id=${productid}&product_details=${productid}`);
+    // Update cart value in localStorage
+  const cartValue = JSON.parse(localStorage.getItem('cartValue') || '[]');
+  cartValue.push((cartValue.length + 1)); // Assuming you want to add a new item with an incremented ID
+  localStorage.setItem('cartValue', JSON.stringify(cartValue));
+  // Dispatch action to update Redux store
+  dispatch(getaddtocartvalue(cartValue));
+  console.log("Product added to cart:", cartValue);
+  // Optionally, you can show a success message or update UI
+  alert("Product added to cart successfully!");
+   
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -57,65 +78,7 @@ const ProductPage = ({ params }: { params: Promise<{ producttitle: string }> }) 
     fetchData();
   }, [producttitle_data]);
 
-  // const handlePayment = async () => {
-  //   if (!product) return;
-    
-  //   setIsProcessing(true);
-  //   try {
-  //     const response = await axios.post('/api/order', {
-  //       amount: product.price * 100, // Convert to paise
-  //       currency: "INR",
-  //       receipt: `order_${product._id}`,
-  //       notes: {
-  //         productId: product._id,
-  //         productTitle: product.title
-  //       }
-  //     });
-
-  //     const { data } = response;
-
-  //     if (!window.Razorpay) {
-  //       throw new Error("Razorpay SDK not loaded");
-  //     }
-
-  //     const options = {
-  //       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_pF4jFIvfDkQPOs",
-  //       amount: data.amount,
-  //       currency: data.currency,
-  //       name: product.manufacturer || "Your Company Name",
-  //       description: product.title,
-  //       order_id: data.id,
-  //       handler: function (response: any) {
-  //         console.log("Payment Successful:", response);
-  //         // You might want to verify the payment on your server here
-  //         alert("Payment successful! Order ID: " + response.razorpay_order_id);
-  //       },
-  //       prefill: {
-  //         name: "Customer Name", // You should get this from user input
-  //         email: "customer@example.com",
-  //         contact: "9999999999"
-  //       },
-  //       theme: {
-  //         color: "#3399cc"
-  //       },
-  //       modal: {
-  //         ondismiss: () => {
-  //           console.log("Payment modal dismissed");
-  //           setIsProcessing(false);
-  //         }
-  //       }
-  //     };
-
-  //     const razorpay = new window.Razorpay(options);
-  //     razorpay.open();
-      
-  //   } catch (error) {
-  //     console.error("Error during payment:", error);
-  //     alert("Payment failed. Please try again.");
-  //   } finally {
-  //     setIsProcessing(false);
-  //   }
-  // };
+ 
 
   if (!product) {
     return <div className="bg-gray-100 pt-20 flex justify-center items-center h-screen">
@@ -125,12 +88,7 @@ const ProductPage = ({ params }: { params: Promise<{ producttitle: string }> }) 
 
   return (
     <>
-      {/* <Script 
-        src="https://checkout.razorpay.com/v1/checkout.js" 
-        strategy="afterInteractive"
-        onLoad={() => setRazorpayLoaded(true)}
-      />
-       */}
+   
       <div className="p-4 mt-20 bg-gray-50">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Image Section */}
@@ -180,12 +138,12 @@ const ProductPage = ({ params }: { params: Promise<{ producttitle: string }> }) 
             </div>
 
             <div className="flex gap-4 mt-4">
-              <Link 
-                href={`/add_to_card_view?product_id=${product._id}&product_details=${product._id}`} 
-                className="flex-1 bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition text-center"
+              <button 
+                onClick={() => handleAddToCartvalue(product._id)} 
+                className="flex-1 bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition"
               >
                 Add to Cart
-              </Link>
+              </button>
 
               <Link 
                 href={`/buynow_page?product_id=${product._id}&product_details=${product._id}`} 

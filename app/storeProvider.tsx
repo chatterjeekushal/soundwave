@@ -20,7 +20,8 @@ export default function StoreProvider({
 
   // add inisial state
 
-  storeRef.current.dispatch(getpricefiltervalue('all'))
+  // storeRef.current.dispatch(getpricefiltervalue('all'))
+ 
 
   return <Provider store={storeRef.current}>{children}</Provider>
 }

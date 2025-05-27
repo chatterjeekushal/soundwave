@@ -1,15 +1,15 @@
 
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { ImagesSliderDemo } from "@/components/shop_hero";
 import ProductCard from "@/components/ui/product_card";
 import axios from "axios";
 import { ComboboxDemo } from "@/components/ui/filter_compo";
 import { useAppSelector } from "@/lib/store/hooks";
-import FilterCategory from "@/components/ui/filter_catagory";  // ✅ Corrected import
-import Link from 'next/link'
-
+import FilterCategory from "@/components/ui/filter_catagory";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface Product {
     category: string;
@@ -27,45 +27,39 @@ interface Product {
 }
 
 export default function ShopPage() {
-    
     const [products, setProducts] = useState<Product[]>([]);
     
-    // Retrieve price filter value from Redux state
     const priceRange = useAppSelector((state) => state.getpricefiltervalue.value);
-    const catagory= useAppSelector((state) => state.getfiltercatagoryvalue.value);
+    const catagory = useAppSelector((state) => state.getfiltercatagoryvalue.value);
 
-    console.log(priceRange,"priceRange")
-    console.log(catagory,"catagory")
+   const fetchData = useCallback(async (producttitle_data?: string) => {
+  try {
+    // Convert to string before encoding
+    const price = encodeURIComponent(String(priceRange || 'all'));
+    const category = encodeURIComponent(String(catagory || 'all'));
 
+    const response = await axios.get(`/api/shop_page?price=${price}&catagory=${category}`);
+
+    if (response.data?.products) {
+      setProducts(response.data.products);
+    } else {
+      console.error("Invalid API response format:", response.data);
+    }
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  }
+}, [priceRange, catagory]);
+
+
+
+    // Fetch on mount and filter change
     useEffect(() => {
-
-        async function fetchData() {
-            try {
-                const response = await axios.get(`/api/shop_page?price=${priceRange}&catagory=${catagory}`);
-                if (response.data?.products) {
-
-                    if (response.data.products.length === 0) {
-                        
-                    }
-                    // Check if the response data is in the expected format
-
-                    // console.log(response.data.products);
-
-                    setProducts(response.data.products);
-
-                } else {
-                    console.error("Invalid API response format:", response.data);
-                }
-            } catch (error) {
-                console.error("Error fetching products:", error);
-            }
-        }
-
         fetchData();
-    }, [priceRange,catagory]); // Dependency ensures re-fetch when price filter changes
+    }, [fetchData]);
+
+
 
     return (
-     
         <div className="container mx-auto px-4 md:px-8">
             {/* Hero Slider Section */}
             <div className="w-full h-full bg-gray-200 rounded-lg overflow-hidden mt-20">
